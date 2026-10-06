@@ -1,0 +1,147 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#f8c8d8">
+<meta name="description" content="A little birthday surprise made with love for Love.">
+<title>For Love 💗</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=Playfair+Display:ital,wght@0,500;0,600;1,500;1,600&display=swap');
+:root{--pink:#f6b8cb;--rose:#d96f95;--deep:#5c3046;--cream:#fff8fb;--soft:#fde8ef}
+*{box-sizing:border-box} html{scroll-behavior:smooth}
+body{margin:0;background:radial-gradient(circle at 20% 0,#fff 0,#fff8fb 35%,#fdebf2 100%);color:var(--deep);font-family:"DM Sans",sans-serif;overflow-x:hidden}
+button{font:inherit}
+#intro{position:fixed;inset:0;z-index:20;display:grid;place-items:center;background:linear-gradient(145deg,#fff1f6,#f8c7d8);transition:opacity .9s,visibility .9s}
+#intro.hide{opacity:0;visibility:hidden;pointer-events:none}
+.intro-inner{text-align:center;padding:28px}
+.intro-inner p{margin:0 0 16px;letter-spacing:.12em;text-transform:uppercase;font-size:.72rem;color:#91516d}
+.envelope{position:relative;width:min(310px,78vw);height:205px;margin:auto;cursor:pointer;filter:drop-shadow(0 20px 24px #a95b7726);animation:float 3s ease-in-out infinite}
+.env-back{position:absolute;inset:0;background:#f7afc7;border-radius:16px;overflow:hidden}
+.env-back:after{content:"";position:absolute;left:0;right:0;bottom:0;border-left:155px solid transparent;border-right:155px solid transparent;border-bottom:105px solid #ef9fba}
+.flap{position:absolute;top:0;left:0;width:0;height:0;border-left:155px solid transparent;border-right:155px solid transparent;border-top:112px solid #f9bfd3;transform-origin:top;transition:transform .8s cubic-bezier(.2,.8,.2,1);z-index:3}
+.envelope.open .flap{transform:rotateX(180deg);z-index:1}
+.heart-seal{position:absolute;z-index:5;left:50%;top:50%;transform:translate(-50%,-25%);width:54px;height:54px;border-radius:50%;display:grid;place-items:center;background:#fff7fa;box-shadow:0 8px 20px #9a4d6828;font-size:25px;transition:opacity .4s}
+.envelope.open .heart-seal{opacity:0}
+.open-text{margin-top:20px;color:#75405a;font-weight:600}.hint{font-size:.82rem;opacity:.7;margin-top:7px}
+main{max-width:1000px;margin:auto;padding:60px 20px 80px}
+.hero{text-align:center;min-height:72vh;display:grid;place-items:center;align-content:center;position:relative}
+.eyebrow{text-transform:uppercase;letter-spacing:.22em;font-size:.7rem;color:#a45c78}
+h1,h2{font-family:"Playfair Display",serif;font-weight:500}
+h1{font-size:clamp(3.1rem,12vw,7rem);line-height:.9;margin:14px 0;color:#743d57}
+.hero p{font-family:"Playfair Display",serif;font-style:italic;font-size:clamp(1.1rem,3vw,1.45rem);max-width:620px;margin:22px auto;color:#805269}
+.scroll{display:inline-block;margin-top:30px;padding:13px 21px;border-radius:999px;background:#fff;border:1px solid #f0c2d1;color:#85475f;box-shadow:0 10px 25px #a95b7720;cursor:pointer}
+.section{margin:30px auto 90px;max-width:780px}
+.card{background:#ffffffbd;border:1px solid #fff;box-shadow:0 18px 45px #a95b7715;border-radius:28px;padding:clamp(24px,5vw,48px);backdrop-filter:blur(8px)}
+h2{font-size:clamp(2rem,7vw,3.2rem);margin:0 0 18px}
+.letter p{line-height:1.85;font-size:1rem;margin:0 0 14px}.sign{font-family:"Playfair Display",serif;font-style:italic;font-size:1.25rem;margin-top:24px}
+.gallery{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.photo{margin:0;overflow:hidden;border-radius:22px;background:#f7d8e2;box-shadow:0 14px 30px #8b4a6118}
+.photo img{width:100%;height:420px;display:block;object-fit:cover;transition:transform .6s}.photo:hover img{transform:scale(1.035)}
+.controls{display:flex;justify-content:center;gap:12px;flex-wrap:wrap;margin-top:22px}
+.pill{border:0;border-radius:999px;padding:14px 20px;background:#e98eae;color:#fff;cursor:pointer;box-shadow:0 10px 22px #c663862d;transition:transform .2s,box-shadow .2s}.pill:hover{transform:translateY(-2px);box-shadow:0 14px 26px #c663862d}
+.pill.secondary{background:#fff;color:#85475f;border:1px solid #efc5d3}
+.surprise{display:none;text-align:center;margin-top:24px;padding:28px;border-radius:24px;background:#fff4f8;border:1px solid #f5ccd9;animation:reveal .7s both}
+.surprise.show{display:block}.surprise strong{font-family:"Playfair Display",serif;font-size:clamp(1.6rem,6vw,2.4rem);font-weight:500}
+.footer{text-align:center;font-size:.78rem;opacity:.6;padding:20px}
+.floating{position:fixed;inset:0;pointer-events:none;z-index:1;overflow:hidden}.float{position:absolute;bottom:-40px;animation:rise linear forwards;opacity:0}
+.spark{position:absolute;width:5px;height:5px;border-radius:50%;background:#fff;box-shadow:0 0 10px #fff;animation:twinkle 2s ease-in-out infinite}
+@keyframes float{50%{transform:translateY(-8px)}} @keyframes rise{0%{transform:translateY(0) rotate(0);opacity:0}10%{opacity:.7}100%{transform:translateY(-110vh) rotate(35deg);opacity:0}}
+@keyframes twinkle{50%{opacity:.2;transform:scale(.45)}} @keyframes reveal{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
+@media(max-width:720px){main{padding-top:30px}.hero{min-height:80vh}.gallery{grid-template-columns:1fr}.photo img{height:500px}.section{margin-bottom:70px}}
+@media(prefers-reduced-motion:reduce){*,*:before,*:after{animation-duration:.01ms!important;transition-duration:.01ms!important;scroll-behavior:auto!important}}
+</style>
+</head>
+<body>
+<div id="intro">
+  <div class="intro-inner">
+    <p>A little surprise for you</p>
+    <div class="envelope" id="envelope" aria-label="Open birthday envelope" role="button" tabindex="0">
+      <div class="env-back"></div><div class="flap"></div><div class="heart-seal">♥</div>
+    </div>
+    <div class="open-text">Tap the envelope, Love 💌</div>
+    <div class="hint">Something special is waiting inside.</div>
+  </div>
+</div>
+
+<div class="floating" id="floating"></div>
+<main>
+<section class="hero" id="top">
+  <div>
+    <div class="eyebrow">Today is all about you</div>
+    <h1>Happy Birthday,<br>Love 💗</h1>
+    <p>For the girl who deserves all the beautiful things life has to offer.</p>
+    <button class="scroll" onclick="document.getElementById('letter').scrollIntoView({behavior:'smooth'})">Open your letter ↓</button>
+  </div>
+</section>
+
+<section class="section" id="letter">
+ <div class="card letter">
+  <h2>To my love,</h2>
+  <p>Hi love, I wanted to say <strong>Happy Birthday!!</strong></p>
+  <p>You stay who you are and what you are, love. You are perfect in my eyes. I hope you achieve your goals in life and be successful coz you deserve all the better things in life!!</p>
+  <p>Also, I’m gonna take this opportunity to say <strong>thank you for choosing me to be part of your life</strong> and for being always understanding.</p>
+  <p>I wish you all the best, my loveee, and more birthdays to come. I love you so much, love!!!</p>
+  <div class="sign">— Calix ♡</div>
+ </div>
+</section>
+
+<section class="section">
+ <div class="card">
+  <h2>A few moments of you ✨</h2>
+  <div class="gallery">
+   <figure class="photo"><img src="photo1.png" alt="Love"></figure>
+   <figure class="photo"><img src="photo2.png" alt="Love"></figure>
+   <figure class="photo"><img src="photo3.png" alt="Love"></figure>
+  </div>
+ </div>
+</section>
+
+<section class="section">
+ <div class="card" style="text-align:center">
+  <h2>Stay a little longer 💞</h2>
+  <p style="line-height:1.8">There’s a tiny soundtrack for this little corner of the internet. Tap play when you’re ready.</p>
+  <div class="controls">
+   <button class="pill" id="musicBtn">♫ Play our little melody</button>
+   <button class="pill secondary" id="surpriseBtn">💝 One more surprise</button>
+  </div>
+  <div class="surprise" id="surprise">
+   <strong>My favorite part of life is getting to share it with you. ❤️</strong>
+   <p style="line-height:1.8;margin-bottom:0">No matter where life takes us, I hope we keep choosing each other, again and again.</p>
+  </div>
+ </div>
+</section>
+<div class="footer">Made with love by Calix · Happy Birthday, Love ♡</div>
+</main>
+
+<audio id="music" src="love_melody.wav" loop preload="auto"></audio>
+<script>
+const intro=document.getElementById('intro'), envelope=document.getElementById('envelope');
+function openEnvelope(){
+  envelope.classList.add('open');
+  setTimeout(()=>intro.classList.add('hide'),850);
+  burst();
+}
+envelope.addEventListener('click',openEnvelope);
+envelope.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();openEnvelope()}});
+function burst(){
+  const box=document.getElementById('floating');
+  for(let i=0;i<22;i++){
+    const s=document.createElement('span'); s.className='float'; s.textContent=Math.random()>.35?'♥':'✦';
+    s.style.left=Math.random()*100+'%'; s.style.fontSize=(12+Math.random()*18)+'px';
+    s.style.animationDuration=(5+Math.random()*6)+'s'; s.style.animationDelay=(Math.random()*1.5)+'s';
+    s.style.color=['#e98eae','#d96f95','#f3b3c8','#b87896'][i%4]; box.appendChild(s);
+    setTimeout(()=>s.remove(),13000);
+  }
+}
+setInterval(()=>{
+ const box=document.getElementById('floating'), s=document.createElement('span');
+ s.className='spark'; s.style.left=Math.random()*100+'%'; s.style.top=Math.random()*100+'%';
+ s.style.animationDelay=(Math.random()*2)+'s'; box.appendChild(s); setTimeout(()=>s.remove(),2600);
+},700);
+const music=document.getElementById('music'), musicBtn=document.getElementById('musicBtn');
+musicBtn.onclick=async()=>{try{if(music.paused){await music.play();musicBtn.textContent='♫ Pause our little melody'}else{music.pause();musicBtn.textContent='♫ Play our little melody'}}catch(e){musicBtn.textContent='♫ Tap again to play'}};
+document.getElementById('surpriseBtn').onclick=()=>{document.getElementById('surprise').classList.toggle('show'); if(document.getElementById('surprise').classList.contains('show')) document.getElementById('surprise').scrollIntoView({behavior:'smooth',block:'center'})};
+</script>
+</body>
+</html>
